@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #eef3f6;
+  --color-bg-soft: #e4edf2;
+  --color-brand: #0f766e;
+  --color-brand-hover: #0d5f59;
+  --color-card-bg: #ffffff;
+  --color-card-border: #c9d5dd;
+  --color-text: #0f172a;
+  --color-text-muted: #445568;
+  --color-input-bg: #ffffff;
+  --color-input-border: #bdd0db;
+  --color-sidebar-bg: #e2ebf1;
+}
+
+.dark {
+  --color-bg: #0d141b;
+  --color-bg-soft: #17232d;
+  --color-brand: #0d9488;
+  --color-brand-hover: #0b7f75;
+  --color-card-bg: #16222d;
+  --color-card-border: #2c3c4a;
+  --color-text: #e5e7eb;
+  --color-text-muted: #9aabbb;
+  --color-input-bg: #12202b;
+  --color-input-border: #324555;
+  --color-sidebar-bg: #13212c;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    @apply antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 font-semibold text-white shadow-sm transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50;
+    background-color: var(--color-brand);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-brand-hover);
+    @apply -translate-y-px shadow-md;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 font-semibold transition-all duration-200;
+    border: 1px solid var(--color-card-border);
+    background-color: var(--color-card-bg);
+    color: var(--color-text);
+  }
+
+  .btn-secondary:hover {
+    background-color: rgba(15, 23, 42, 0.04);
+  }
+
+  .dark .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+  }
+
+  .input-field {
+    @apply w-full rounded-xl px-4 py-2.5 placeholder-slate-500 shadow-sm transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-teal-500/20;
+    border: 1px solid var(--color-input-border);
+    background-color: var(--color-input-bg);
+    color: var(--color-text);
+  }
+
+  .card {
+    @apply rounded-2xl p-6 shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300;
+    border: 1px solid var(--color-card-border);
+    background-color: var(--color-card-bg);
+  }
+
+  .dark .card {
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.35);
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden rounded-lg bg-slate-700;
+  }
+
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    animation: shimmer 1.4s infinite;
+  }
+
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .dark .bg-grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+  }
+
+  .auth-shell {
+    --color-bg: #0b1118;
+    --color-bg-soft: #121a25;
+    --color-card-bg: #131c29;
+    --color-card-border: #243044;
+    --color-text: #e5e7eb;
+    --color-text-muted: #9ca3af;
+    --color-input-bg: #0e1622;
+    --color-input-border: #2a3950;
+    --color-sidebar-bg: #111927;
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .auth-shell .card {
+    border-color: var(--color-card-border);
+    background-color: var(--color-card-bg);
+  }
+
+  .auth-shell .auth-label {
+    color: var(--color-text-muted);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
