@@ -77,7 +77,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     const onMessage = (event) => {
-      if (event.origin !== apiOrigin) return
+      if (!event.origin.includes('onrender.com')) return
       if (event.data?.source !== 'jobpilot-google-oauth') return
       if (event.data?.error) {
         if (event.data.error === 'oauth_not_configured') {
